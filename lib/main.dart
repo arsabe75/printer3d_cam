@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:printer3d_cam/config/router/app_router.dart';
 import 'package:printer3d_cam/config/theme/app_theme.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  WakelockPlus.enable();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

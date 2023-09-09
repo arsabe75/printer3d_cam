@@ -13,38 +13,30 @@ class HomeScreen extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Printer 3D Cam'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Mjpeg(
-                fit: BoxFit.cover,
-                isLive: isRunning.value,
-                error: (context, error, stack) {
-                  //print(error);
-                  //print(stack);
-                  return Text(error.toString(),
-                      style: const TextStyle(color: Colors.red));
-                },
-                stream:
-                    'http://192.168.0.34:8081/video.mjpg', //'http://192.168.1.37:8081',
-              ),
-            ),
-          ),
-          Row(
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  isRunning.value = !isRunning.value;
-                },
-                child: Text(isRunning.value
-                    ? 'Estado actual: ON'
-                    : 'Estado Actual: OFF'),
-              ),
-            ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              isRunning.value = !isRunning.value;
+            },
+            icon: Icon(isRunning.value
+                ? Icons.camera_alt_rounded
+                : Icons.camera_alt_outlined),
           ),
         ],
+      ),
+      body: Center(
+        child: Mjpeg(
+          fit: BoxFit.cover,
+          isLive: isRunning.value,
+          error: (context, error, stack) {
+            //print(error);
+            //print(stack);
+            return Text(error.toString(),
+                style: const TextStyle(color: Colors.red));
+          },
+          stream:
+              'http://192.168.0.34:8081/video.mjpg', //'http://192.168.1.37:8081',
+        ),
       ),
     );
   }
