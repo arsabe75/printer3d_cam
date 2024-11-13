@@ -35,7 +35,7 @@ class HomeScreen extends HookWidget {
                 style: const TextStyle(color: Colors.red));
           },
           stream:
-              'http://192.168.0.34:8081/video.mjpg', //'http://192.168.1.37:8081',
+              'http://192.168.68.115:8081/video.mjpg', //'http://192.168.1.37:8081',
         ),
       ),
     );
